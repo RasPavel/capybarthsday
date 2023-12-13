@@ -89,7 +89,7 @@ html {
 
 @media (orientation: portrait) {
   .capybara img {
-    content: url("img/capybara_portrait.jpeg");
+    content: url("img/capybara_portrait.webp");
   }
 }
 
