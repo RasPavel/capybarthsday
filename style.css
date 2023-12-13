@@ -1,32 +1,116 @@
+/* style.css */
+
 body,
 html {
   margin: 0;
   padding: 0;
 }
 
-.banner {
+.design {
+  /* Initially hide all designs */
+  display: none;
+}
+
+.capybara {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
+  z-index: 1; /* Ensure the image is behind the window */
 }
 
-.banner img {
-  position: absolute;
+.capybara img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This will ensure the image covers the area properly */
+  content: url("img/capybara_landscape.jpeg");
+}
+
+#mask {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  background: #fff url("img/cake.svg") no-repeat center;
+  background-size: 100px; /* Initial size of the window */
+  mix-blend-mode: screen;
+  z-index: 2; /* This places the window above the image */
 }
 
-.banner #bg {
-  position: absolute;
+#captionForImage {
+  position: fixed;
+  top: 300%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10em;
+  color: #ebcdb3;
+  text-shadow: 0 0 2px #d1a075, 0 0 3px #e28d43;
+  font-family: "Caveat Brush", cursive;
+  z-index: 3;
+  transition: top 0.8s ease;
+}
+
+#designCards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+#cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  width: 80%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  flex-basis: 150px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin: 10px; /* Space between cards */
+}
+
+.card img {
   width: 100%;
-  height: 100%;
-  background: #fff url(img/cake.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100px;
-  mix-blend-mode: screen;
+  height: auto;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+@media (orientation: portrait) {
+  .capybara img {
+    content: url("img/capybara_portrait.jpeg");
+  }
+}
+
+#captionForCards {
+  font-size: 8em;
+  color: rgba(92, 92, 92, 2);
+  font-family: "Dancing Script", cursive;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 800px) {
+  #captionForImage {
+    font-size: 4em;
+  }
+
+  #captionForCards {
+    font-size: 4em;
+  }
+
+  .card {
+    flex-basis: 100px;
+  }
 }
